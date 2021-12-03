@@ -1,7 +1,5 @@
-<template>
-  <div class='home'>
-    <img alt='Vue logo' src='../assets/logo.png' />
-  </div>
+<template title="Home">
+<div class="home">A</div>
 </template>
 
 <script>
