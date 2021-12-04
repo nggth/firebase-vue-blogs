@@ -1,31 +1,28 @@
 <template>
-  <div class="card article">
-    <div class="card-content">
-      <div class="media">
-        <div class="media-center">
-          <img src="http://www.radfaces.com/images/avatars/daria-morgendorffer.jpg" class="author-image" alt="Placeholder image">
+  <div class="container pt-4">
+    <section class="articles">
+        <div class="column is-8 is-offset-2">
+          <div class="card article">
+              <div class="card-content">
+                  <div class="media">
+                      <div class="media-content has-text-centered">
+                          <p class="title article-title">The Skincare Dictionary: Every Ingredient Explained</p>
+                          <div class="tags has-addons level-item">
+                              <span class="tag is-rounded is-info">@claire</span>
+                              <span class="tag is-rounded">December 4, 2021</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="content article-body pt-5">
+                      <p>When it comes to skincare, it seems like the number of serum, face cream and oil offerings (and claims) on store shelves are ever-growing — because they are. In 2019, skincare brought in nearly $5.9 billion in sales and outpaced makeup growth by 12%, according to the NPD Group, a market research company. And according to Google Trends, searches for "skincare" reached an all-time high in 2020, still maintaining record-breaking popularity today.</p>
+                      <h3 class="has-text-centered py-3">What are the main ingredients in today's skin care products?</h3>
+                      <p>There are a lot of skin care products on the market. This document will help you understand the latest ingredients in skin care products that may benefit your skin.</p>
+                      <p>If you're still unsure which skin care products are right for you, ask your dermatologist or consult with a skin expert at your local salon or beauty counter.</p>
+                  </div>
+              </div>
+          </div>
         </div>
-        <div class="media-content has-text-centered">
-          <p class="title article-title">Sapien eget mi proin sed 🔱</p>
-          <p class="subtitle is-6 article-subtitle">
-            <a href="#">@daria</a> on February 17, 2018
-          </p>
-        </div>
-      </div>
-      <div class="content article-body">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Accumsan lacus vel facilisis volutpat est velit egestas. Sapien eget mi proin sed. Sit amet mattis vulputate enim.
-        </p>
-        <p>
-          Commodo ullamcorper a lacus vestibulum sed arcu. Fermentum leo vel orci porta non. Proin fermentum leo vel orci porta non pulvinar. Imperdiet proin fermentum leo vel. Tortor posuere ac ut consequat semper viverra. Vestibulum lectus mauris ultrices eros.
-        </p>
-        <h3 class="has-text-centered">Lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi. Cras tincidunt lobortis feugiat vivamus.</h3>
-        <p>
-          In eu mi bibendum neque egestas congue quisque egestas diam. Enim nec dui nunc mattis enim ut tellus. Ut morbi tincidunt augue interdum velit euismod in. At in tellus integer feugiat scelerisque varius morbi enim nunc. Vitae suscipit tellus mauris a diam.
-            Arcu non sodales neque sodales ut etiam sit amet.
-        </p>
-      </div>
-    </div>
+    </section>
   </div>
 </template>
 

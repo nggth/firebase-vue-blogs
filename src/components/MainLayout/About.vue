@@ -1,5 +1,5 @@
 <template>
-  <div class="main-content">
+  <div class="main-content py-4">
     <div class="section-light about-me" id="about-me">
       <div class="container">
         <div class="column is-12 about-me">
@@ -12,25 +12,22 @@
           >
             <p class="is-larger">
               &emsp;&emsp;<strong
-                >Showcase is a modern, beautiful personal website template to
-                showcase who you are, as well as projects you've worked on in
-                the past.</strong
+                >Cecilia is a website with all the desire to bring a world of skin care to you.
+                We understand and listen to your skin, thereby creating a website to bring you trust.</strong
               >
             </p>
             <br />
             <p>
-              Showcase was built from the ground up with Bulma to be fast and
-              responsive out of the box with all source files well documented
-              for easy to customization. The Showcase template gives you a
-              personal space to share what you are all about as a creative
-              designer, developer, photographer, and more!
+              Each product will tell a story, we will be the ones to present the story in a special light and bring it to you.
+              We will always make sure to get ingredients lists certified from the official site sources where the products come from.
+              The appearance of this website is our honor, looking forward to your support.
             </p>
             <br />
             <div class="is-divider"></div>
             <div class="columns about-links">
               <div class="column">
                 <p class="heading">
-                  <strong>Give me a ring</strong>
+                  <strong>Contact to me</strong>
                 </p>
                 <p class="subheading">
                   123-456-7890
@@ -41,15 +38,7 @@
                   <strong>Email Me</strong>
                 </p>
                 <p class="subheading">
-                  hello@example.com
-                </p>
-              </div>
-              <div class="column">
-                <p class="heading">
-                  <strong>View my portfolio</strong>
-                </p>
-                <p class="subheading">
-                  example.com
+                  ntnha0209@gmail.com
                 </p>
               </div>
             </div>
@@ -57,7 +46,7 @@
           <div class="column is-6 right-image " data-aos="fade-left">
             <img
               class="is-rounded"
-              src="https://picsum.photos/id/366/600/375"
+              src="../../assets/homeImgs/about.jpg"
               alt=""
             />
           </div>
@@ -75,7 +64,7 @@ export default {
   created () {
     AOS.init({
       easing: "ease-out",
-      duration: 800,
+      duration: 700,
     });
   }
 }

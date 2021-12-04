@@ -37,5 +37,7 @@ export default {
 </script>
 
 <style>
-
+.navbar {
+    font-size: 1.1rem;
+}
 </style>
