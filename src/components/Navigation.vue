@@ -1,7 +1,7 @@
 <template>
     <b-navbar>
         <template #brand>
-            <b-navbar-item tag="router-link" :to="{ path: '/' }">
+            <b-navbar-item tag="router-link" :to="{ name: 'Home' }">
                 <img
                     src="../assets/logodesign1.png"
                     alt="Logo"
@@ -10,10 +10,10 @@
         </template>
         <template #start>
             <b-navbar-item>
-                <router-link to="/home">Home</router-link>
+                <router-link :to="{ name: 'Home' }">Home</router-link>
             </b-navbar-item>
             <b-navbar-item>
-                <router-link to="/blogs">Blogs</router-link>
+                <router-link :to="{name: 'Blogs'}">Blogs</router-link>
             </b-navbar-item>
             <b-navbar-item>
                 <router-link to="/createblogs">Create Blogs</router-link>
@@ -39,5 +39,6 @@ export default {
 <style>
 .navbar {
     font-size: 1.1rem;
+    /* border-bottom: 0.5px solid  */
 }
 </style>

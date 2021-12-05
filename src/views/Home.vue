@@ -3,15 +3,13 @@
       <Banner />
       <About />
       <Article />
-      <div>
-        <div class="container is-fullwidth">
-            <div class="section">
-              <h2 class="title is-4">View more blog</h2>
-              <div class="row columns is-variable">
-                <BlogCard class="column is-3 mx-1" :post="post" v-for="(post, index) in sampleBlogCards" :key="index" />
-              </div>
+      <div class="container is-fullwidth">
+          <div class="section">
+            <h2 class="title is-4">View more blog</h2>
+            <div class="row columns is-variable">
+              <BlogCard class="column is-3 mx-1" :post="post" v-for="(post, index) in sampleBlogCards" :key="index" />
             </div>
-        </div>
+          </div>
       </div>
   </div>
 </template>

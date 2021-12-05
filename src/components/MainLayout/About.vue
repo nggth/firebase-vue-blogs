@@ -46,7 +46,7 @@
           <div class="column is-6 right-image " data-aos="fade-left">
             <img
               class="is-rounded"
-              src="../../assets/homeImgs/about.jpg"
+              src="../../assets/img/home/about.jpg"
               alt=""
             />
           </div>

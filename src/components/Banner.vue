@@ -19,7 +19,7 @@
 export default {
     methods: {
       getImgUrl(value) {
-        return require(`@/assets/homeImgs/banner-${value}.jpg`)
+        return require(`@/assets/img/home/banner-${value}.jpg`)
       }
     }
 }

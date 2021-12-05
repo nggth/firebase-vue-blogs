@@ -17,8 +17,8 @@
       </div>
       <hr class="line">
       <div class="blog-photo column is-6">
-        <img v-if="post.welcomeScreen" :src="require(`../assets/blogPhotos/${post.photo}.jpg`)" atl="" />
-        <img v-else :src="require(`../assets/blogPhotos/${post.blogCoverPhoto}.jpg`)" atl="" />
+        <img v-if="post.welcomeScreen" :src="require(`../assets/img/blogPhotos/${post.photo}.jpg`)" atl="" />
+        <img v-else :src="require(`../assets/img/blogPhotos/${post.blogCoverPhoto}.jpg`)" atl="" />
       </div>
     </div>
 
