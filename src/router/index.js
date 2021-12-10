@@ -33,7 +33,7 @@ const routes = [
     name: 'Register',
     component: () => import('../views/Register.vue'),
     meta: {
-      title: 'Blogs'
+      title: 'Register'
     }
   },
   {
@@ -41,7 +41,7 @@ const routes = [
     name: 'ForgotPassword',
     component: () => import('../views/ForgotPassword.vue'),
     meta: {
-      title: 'Blogs'
+      title: 'Forgot Password'
     }
   },
 ];

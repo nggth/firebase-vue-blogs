@@ -27,8 +27,9 @@
                 Welcome to Cecilia
             </h1>
             <h2 class="subtitle is-4">
-              We're waiting for you. Let Cecilia sympathize with you skin
+              I'm Claire. I'm waiting for you.
             </h2>
+            <h3>Let Cecilia sympathize with you skin.</h3>
             <br>
             <p class="has-text-centered">
               <a class="button is-medium is-info is-outlined">
