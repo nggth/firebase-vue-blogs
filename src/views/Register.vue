@@ -1,35 +1,47 @@
 <template>
-  <div class="login-bg">
+  <div class="register-bg">
     <section class="hero is-fullheight">
       <div class="hero-body">
         <div class="container has-text-centered">
-          <div class="column login-box is-4 pt-5">
+          <div class="column register-box is-4 pt-5">
             <h1 class="title">
                 Register
             </h1>
-            <hr class="login-hr">
+            <hr class="register-hr">
             <p class="is-size-5 has-text-black">Please register to proceed.</p>
-            <div class="section form-login">
+            <div class="section register-form">
               <form>
                 <div class="field">
-                  <div class="control">
+                  <p class="control has-icons-left has-icons-right">
                     <input class="input" type="text" placeholder="Name" autofocus="" v-model="name">
-                  </div>
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
+                  </p>
                 </div>
                 <div class="field">
-                  <div class="control">
+                  <p class="control has-icons-left">
                     <input class="input" type="text" placeholder="User name" autofocus="" v-model="userName">
-                  </div>
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-lock"></i>
+                    </span>
+                  </p>
                 </div>
                 <div class="field">
-                  <div class="control">
-                    <input class="input" type="email" placeholder="Your Email" autofocus="" v-model="email">
-                  </div>
+                  <p class="control has-icons-left">
+                    <input class="input" type="email" placeholder="Email" autofocus="" v-model="email">
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-lock"></i>
+                    </span>
+                  </p>
                 </div>
                 <div class="field">
-                  <div class="control">
+                  <p class="control has-icons-left has-icons-right">
                     <input class="input" type="password" placeholder="Your Password" v-model="password">
-                  </div>
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
+                  </p>
                 </div>
                 <div class="field">
                   <button class="button is-block is-info is-fullwidth">Create an account</button>
@@ -64,17 +76,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.login-bg {
+.register-bg {
   background-image: url('../assets/login3.jpg');
   background-position: center center;
   background-repeat:  no-repeat;
   background-attachment: fixed;
   background-size:  cover;
   background-color: #999;
-  .login-box {
+  .register-box {
     box-shadow: 8px 8px 15px #cfcfcf, -8px -8px 15px #cfcfcf;
   }
-  .form-login {
+  .register-form {
     background-color: transparent;
   }
   .box-question {
