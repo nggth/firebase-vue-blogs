@@ -21,17 +21,17 @@
                 </div>
                 <div class="field">
                   <p class="control has-icons-left">
-                    <input class="input" type="text" placeholder="User name" autofocus="" v-model="userName">
+                    <input class="input" type="email" placeholder="Email" autofocus="" v-model="email">
                     <span class="icon is-small is-left">
-                      <i class="fas fa-lock"></i>
+                      <i class="fas fa-envelope"></i>
                     </span>
                   </p>
                 </div>
                 <div class="field">
                   <p class="control has-icons-left">
-                    <input class="input" type="email" placeholder="Email" autofocus="" v-model="email">
+                    <input class="input" type="text" placeholder="User name" autofocus="" v-model="userName">
                     <span class="icon is-small is-left">
-                      <i class="fas fa-lock"></i>
+                      <i class="fas fa-user-circle"></i>
                     </span>
                   </p>
                 </div>
@@ -39,7 +39,7 @@
                   <p class="control has-icons-left has-icons-right">
                     <input class="input" type="password" placeholder="Your Password" v-model="password">
                     <span class="icon is-small is-left">
-                      <i class="fas fa-user"></i>
+                      <i class="fas fa-lock"></i>
                     </span>
                   </p>
                 </div>
