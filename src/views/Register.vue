@@ -1,5 +1,6 @@
 <template>
   <div class="register-login-bg">
+    <Back />
     <section class="hero is-fullheight">
       <div class="hero-body">
         <div class="container has-text-centered">
@@ -43,13 +44,14 @@
                     </span>
                   </p>
                 </div>
+                <div v-show="error">{{ this.errorMsg }}</div>
                 <div class="field">
-                  <button class="button is-block is-info is-fullwidth">Create an account</button>
+                  <button class="button is-block is-info is-fullwidth" @click.prevent="register">Create an account</button>
                 </div>
                 <div class="field">
                   <div class="box box-question">
                     <p class="shake-text">
-                      <router-link  :to="{ name: 'Login' }">Already have an account?</router-link>
+                      <router-link :to="{ name: 'Login' }">Already have an account?</router-link>
                     </p>
                   </div>
                 </div>
@@ -63,13 +65,43 @@
 </template>
 
 <script>
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import db from '../firebase/initFirebase'
+import Back from '../components/Back.vue';
 export default {
+  components: { Back },
   data() {
     return {
-      email: null,
-      password: null,
-      name: null,
-      userName: null,
+      name: '',
+      email: '',
+      userName: '',
+      password: '',
+      error: null,
+      errorMsg: ''
+    }
+  },
+  methods: {
+    async register() {
+      if(this.name !== '' && this.email !== '' && this.userName !== '' && this.password !== '') {
+        this.error = false
+        this.errorMsg = ''
+        const firebaseAuth = await firebase.auth()
+        const createUser = await firebaseAuth.createUserWithEmailAndPassword(this.email, this.password)
+        const result = await createUser
+        const database = db.collection('users').doc(result.user.uid)
+        await database.set({
+          name:  this.name,
+          email: this.email,
+          userName: this.userName,
+        })
+        this.$router.push({ name: 'Home' })
+        return
+      }
+      this.error = true
+      this.errorMsg = 'Please fill all the fields'
+      return
     }
   }
 }

@@ -1,5 +1,6 @@
 <template>
   <div class="register-login-bg">
+    <Back />
     <section class="hero is-fullheight">
       <div class="hero-body">
         <div class="container has-text-centered">
@@ -56,7 +57,9 @@
 </template>
 
 <script>
+import Back from '../components/Back.vue';
 export default {
+  components: { Back },
   data() {
     return {
       email: null,
