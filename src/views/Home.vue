@@ -16,7 +16,7 @@
 
 <script>
 
-import Banner from '../components/Banner.vue'
+import Banner from '../components/MainLayout/Banner.vue'
 import About from '../components/MainLayout/About.vue'
 import Article from '../components/MainLayout/Article.vue'
 import BlogCard from '../components/MainLayout/BlogCard.vue'

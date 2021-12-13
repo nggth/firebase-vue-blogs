@@ -10,15 +10,7 @@ yarn install
 yarn serve
 ```
 
-### Compiles and minifies for production
+### Storage for testing
 ```
-yarn build
+https://bitly.com.vn/pcyxa8
 ```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
