@@ -2,7 +2,7 @@
   <div class="register-login-bg">
     <Back />
     <section class="hero is-fullheight">
-      <Loading v-if="isLoading" />
+      <!-- <Loading v-if="isLoading" /> -->
       <div class="hero-body">
         <div class="container has-text-centered">
           <div class="column register-login-box is-4 pt-5">
@@ -12,17 +12,28 @@
             <hr />
             <p class="is-size-5 has-text-black">Enter your mail to reset your password.</p>
             <div class="section register-login-form">
-              <form>
+              <form v-on:submit.prevent="confirmReset()">
                 <div class="field">
                   <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="email" placeholder="Email" required autofocus="" v-model="email">
+                    <input v-on:keyup.enter="confirmReset()" class="input" type="email" placeholder="Email" required autofocus="" v-model="email">
                     <span class="icon is-small is-left">
                       <i class="fas fa-envelope"></i>
                     </span>
                   </p>
                 </div>
                 <div class="field">
-                  <b-button class="button is-block is-info is-fullwidth" @click="confirmReset">Reset</b-button>
+                  <div class="columns">
+                    <div class="column is-10">
+                      <b-button class="button is-block is-info is-fullwidth" @click.prevent="confirmReset()">Reset</b-button>
+                    </div>
+                    <div class="column is-2 mt-1">
+                       <b-tooltip label="Back to login page" position="is-right" type="is-white">
+                          <b-button tag="router-link" to='/login' icon-pack="fas" size="is-small" icon-left="sign-in-alt" />
+                      </b-tooltip>
+                    </div>
+                    
+                  </div>
+                 
                 </div>
               </form> 
             </div>
@@ -34,12 +45,12 @@
 </template>
 
 <script>
-import Loading from '../components/Loading.vue';
+// import Loading from '../components/Loading.vue';
 import Back from '../components/Back.vue';
 export default {
   name: 'ForgotPassword',
   components: {
-    Loading,
+    // Loading,
     Back
   },
   data() {

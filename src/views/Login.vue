@@ -1,6 +1,7 @@
 <template>
   <div class="register-login-bg">
     <Back />
+    <Loading v-if="loading" />
     <section class="hero is-fullheight">
       <div class="hero-body">
         <div class="container has-text-centered">
@@ -14,7 +15,7 @@
               <form>
                 <div class="field">
                   <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="email" placeholder="Email">
+                    <input class="input" type="email" placeholder="Email" v-model="email">
                     <span class="icon is-small is-left">
                       <i class="fas fa-envelope"></i>
                     </span>
@@ -22,7 +23,7 @@
                 </div>
                 <div class="field">
                   <p class="control has-icons-left">
-                    <input class="input" type="password" placeholder="Password">
+                    <input class="input" type="password" placeholder="Password" v-model="password">
                     <span class="icon is-small is-left">
                       <i class="fas fa-lock"></i>
                     </span>
@@ -37,13 +38,14 @@
                     <router-link class="is-right" :to="{ name: 'ForgotPassword' }">Forgot your password?</router-link>
                   </div>
                 </div>
+                <div v-show="error">{{ this.errorMsg }}</div>
                 <div class="field">
-                  <button class="button is-block is-info is-fullwidth">Login</button>
+                  <button class="button is-block is-info is-fullwidth" @click.prevent="signIn()">Login</button>
                 </div>
                 <div class="field">
                   <div class="box box-question">
                     <p class="shake-text">
-                      <router-link  :to="{ name: 'Register' }">Don't have an account?</router-link>
+                      <router-link :to="{ name: 'Register' }">Don't have an account?</router-link>
                     </p>
                   </div>
                 </div>
@@ -57,13 +59,41 @@
 </template>
 
 <script>
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+// import db from '../firebase/initFirebase'
 import Back from '../components/Back.vue';
+import Loading from '../components/Loading.vue';
 export default {
-  components: { Back },
+  name: 'Login',
+  components: {
+    Back,
+    Loading
+  },
   data() {
     return {
-      email: null,
-      password: null
+      email: '',
+      password: '',
+      error: null,
+      errorMsg: '',
+      loading: null
+    }
+  },
+  methods: {
+    signIn() {
+      firebase
+      .auth()
+      .signInWithEmailAndPassword(this.email, this.password)
+      .then(() => {
+        this.$router.push({ name: 'Home' })
+        this.error = false
+        this.errorMsg = ''
+        console.log(firebase.auth().currentUser.uid)
+      }).catch((err) => {
+        this.error = true
+        this.errorMsg = err.message
+      })
     }
   }
 }

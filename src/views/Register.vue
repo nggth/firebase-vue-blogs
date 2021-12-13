@@ -1,6 +1,7 @@
 <template>
   <div class="register-login-bg">
     <Back />
+    <Loading v-if="loading" />
     <section class="hero is-fullheight">
       <div class="hero-body">
         <div class="container has-text-centered">
@@ -70,8 +71,12 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import db from '../firebase/initFirebase'
 import Back from '../components/Back.vue';
+import Loading from '../components/Loading.vue';
 export default {
-  components: { Back },
+  components: { 
+    Back,
+    Loading
+  },
   data() {
     return {
       name: '',
@@ -79,7 +84,8 @@ export default {
       userName: '',
       password: '',
       error: null,
-      errorMsg: ''
+      errorMsg: '',
+      loading: null
     }
   },
   methods: {
