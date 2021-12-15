@@ -1,6 +1,6 @@
 <template>
   <div class='app-wrapper'>
-    <div class='app'>
+    <div id='app'>
       <Navigation v-if="!navigation"/>
       <router-view />
       <Footer v-if="!navigation"/>
