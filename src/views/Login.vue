@@ -59,10 +59,9 @@
 </template>
 
 <script>
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
-// import db from '../firebase/initFirebase'
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
 import Back from '../components/Back.vue';
 import Loading from '../components/Loading.vue';
 export default {
@@ -72,29 +71,32 @@ export default {
     Loading
   },
   data() {
+    const user = firebase.auth().currentUser
     return {
       email: '',
       password: '',
       error: null,
       errorMsg: '',
-      loading: null
+      loading: null,
+      user
     }
   },
   methods: {
     signIn() {
       firebase
-      .auth()
-      .signInWithEmailAndPassword(this.email, this.password)
-      .then(() => {
-        this.$router.push({ name: 'Home' })
-        this.error = false
-        this.errorMsg = ''
-        console.log(firebase.auth().currentUser.uid)
-      }).catch((err) => {
-        this.error = true
-        this.errorMsg = err.message
-      })
-    }
-  }
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .then(() => {
+          this.$router.push({ name: 'Home' });
+          this.error = false;
+          this.errorMsg = "";
+          console.log(firebase.auth().currentUser.uid);
+        })
+        .catch((err) => {
+          this.error = true;
+          this.errorMsg = err.message;
+        });
+    },
+  },
 }
 </script>
