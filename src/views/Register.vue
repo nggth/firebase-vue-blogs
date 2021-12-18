@@ -31,7 +31,7 @@
                 </div>
                 <div class="field">
                   <p class="control has-icons-left">
-                    <input class="input" type="text" placeholder="User name" autofocus="" v-model="userName">
+                    <input class="input" type="text" placeholder="User name" autofocus="" v-model="username">
                     <span class="icon is-small is-left">
                       <i class="fas fa-user-circle"></i>
                     </span>
@@ -81,7 +81,7 @@ export default {
     return {
       name: '',
       email: '',
-      userName: '',
+      username: '',
       password: '',
       error: null,
       errorMsg: '',
@@ -90,7 +90,7 @@ export default {
   },
   methods: {
     async register() {
-      if(this.name !== '' && this.email !== '' && this.userName !== '' && this.password !== '') {
+      if(this.name !== '' && this.email !== '' && this.username !== '' && this.password !== '') {
         this.error = false
         this.errorMsg = ''
         const firebaseAuth = await firebase.auth()
@@ -100,7 +100,7 @@ export default {
         await database.set({
           name:  this.name,
           email: this.email,
-          userName: this.userName,
+          username: this.username,
         })
         this.$router.push({ name: 'Home' })
         return
