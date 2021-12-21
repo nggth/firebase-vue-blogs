@@ -68,7 +68,7 @@
 <script>
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import db from '../firebase/initFirebase'
+import db from '../firebase/firebaseConfig'
 // import { db } from '../main'
 import Back from '../components/Back.vue';
 import Loading from '../components/Loading.vue';

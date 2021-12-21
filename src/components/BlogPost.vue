@@ -1,5 +1,5 @@
 <template>
-  <div class="container pt-4 blog-wrapper">
+  <div class="container pt-4 blog-wrapper" :class="{'no-user' : !user}">
     <div class="blog-content columns is-vcentered">
       <div class="column is-6">
         <h2 class="title is-3" v-if="post.welcomeScreen">{{post.title}}</h2>
@@ -29,6 +29,11 @@
 export default {
   name: "blogPost",
   props: ["post"],
+  computed: {
+    user() {
+      return this.$store.state.user
+    }
+  }
 }
 </script>
 
