@@ -2,7 +2,7 @@ import Vue from "vue"
 import Vuex from "vuex"
 import firebase from "firebase/app"
 import "firebase/auth"
-import db from "../firebase/initFirebase"
+import db from "../firebase/firebaseConfig"
 
 Vue.use(Vuex);
 
@@ -20,7 +20,6 @@ export default new Vuex.Store({
     profileName: null,
     profileUsername: null,
     profileId: null,
-    profileInitials: null,
   },
   getters: {
   },
@@ -34,7 +33,7 @@ export default new Vuex.Store({
     setProfileInfo(state, doc) {
       state.profileId = doc.id;
       state.profileEmail = doc.data().email;
-      state.profileFirstName = doc.data().name
+      state.profileName = doc.data().name
       state.profileUsername = doc.data().username;
       console.log(state.profileId);
     },
