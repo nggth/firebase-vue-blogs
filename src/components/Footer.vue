@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: "footer-vue",
+  name: "footer",
 }
 </script>
 
@@ -21,27 +21,19 @@ export default {
 footer {
   margin-top: auto;
   background-color: #303030;
-
   ul {
     margin: 1rem 0 2rem 0;
     text-align: center;
-
     li {
       display: inline-block;
-
       a {
-        margin-left: 0.75rem;
-        margin-right: 0.75rem;
-        
+        margin: auto 0.75rem auto 0.75rem;
       }
       a:hover {
         border-color: transparent;
         background-color: transparent;
-        // color: #485fc7
       }
-        
     }
-
   }
 }
 
