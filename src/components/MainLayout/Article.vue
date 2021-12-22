@@ -5,7 +5,7 @@
           <div class="card article">
               <div class="card-content">
                   <div class="media">
-                      <div class="media-content has-text-centered">
+                      <div class="media-content has-text-centered" style="overflow: hidden">
                           <p class="title article-title">The Skincare Dictionary: Every Ingredient Explained</p>
                           <div class="tags has-addons level-item">
                               <span class="tag is-rounded is-info">@claire</span>
