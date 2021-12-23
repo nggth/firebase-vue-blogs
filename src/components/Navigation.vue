@@ -28,7 +28,7 @@
               </button>
             </div>
             <div class="dropdown-menu" id="dropdown-menu2" role="menu">
-              <div class="dropdown-content">
+              <div class="dropdown-content is-right">
                 <div class="dropdown-item">
                   <div class="level">
                     <div class="level-left">
@@ -39,14 +39,28 @@
                       </div>
                       <div class="level-item">
                         <div>
-                          <p> {{ this.$store.state.profileUsername }} </p>
-                          <p> {{ this.$store.state.profileName }} </p>
-                          <!-- <p> {{ this.$store.state.profileEmail }} </p> -->
+                          <p class="is-size-5"> {{ this.$store.state.profileUsername }} </p>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                <router-link class="dropdown-item" :to="{ name: 'Profile'}">
+                  <span class="icon-text">
+                    <span class="icon">
+                      <i class="fas fa-user"></i>
+                    </span>
+                    <span>Profile</span>
+                  </span>
+                </router-link>
+                <router-link class="dropdown-item" :to="{ name: 'Admin'}">
+                  <span class="icon-text">
+                    <span class="icon">
+                      <i class="fas fa-user-shield"></i>
+                    </span>
+                    <span>Admin</span>
+                  </span>
+                </router-link>
                 <hr class="dropdown-divider">
                 <a class="dropdown-item" @click="signOut" >
                   <span class="icon-text">
@@ -57,7 +71,7 @@
                   </span>
                 </a>
               </div>
-          </div>
+            </div>
           </div>
           <div v-else class="navbar-item">
             <router-link to="/login">Login/Register</router-link>
