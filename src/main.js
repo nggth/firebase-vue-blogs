@@ -15,6 +15,29 @@ import {library} from '@fortawesome/fontawesome-svg-core'
 import firebase from "firebase/app";
 import "firebase/auth";
 
+import VueTippy, { TippyComponent } from "vue-tippy";
+
+Vue.use(VueTippy);
+Vue.component("tippy", TippyComponent);
+
+// or
+Vue.use(VueTippy, {
+  directive: "tippy", // => v-tippy
+  flipDuration: 0,
+  popperOptions: {
+    modifiers: {
+      preventOverflow: {
+        enabled: false
+      }
+    }
+  }
+});
+
+import Toasted from 'vue-toasted'
+Vue.use(Toasted, {
+  singleton: true
+})
+
 Vue.config.productionTip = false
 
 //FontAwesomeIcon
