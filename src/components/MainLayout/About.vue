@@ -1,7 +1,7 @@
 <template>
   <div class="about-me">
     <div class="hero-body">
-      <div class="container has-text-centered">
+      <div class="container">
         <div class="columns">
           <div class="column is-10 is-offset-1">
             <div class="columns featured-post is-multiline">
@@ -11,18 +11,18 @@
                     <img src="../../assets/img/home/aboutBanner.jpg" alt="">
                   </div>
                   <div class="column is-5 featured-content va">
-                    <div>
-                      <h1 class="title post-title">About Cecilia</h1>
+                    <div class="content article-body">
+                      <h1 class="title post-title has-text-centered">About Cecilia</h1>
                       <p><strong>Cecilia</strong> is a website with all the desire to bring a world of skin care to you.
                           We understand and listen to your skin, thereby creating a website to bring you trust.
                       </p>
                       <br>
-                      <!-- <p class="post-excerpt">
+                      <p class="post-excerpt">
                         Each product will tell a story, we will be the ones to present the story in a special light and bring it to you.
                         We will always make sure to get ingredients lists certified from the official site sources where the products come from.
-                      </p> -->
+                      </p>
                       <p class="pb-3">The appearance of this website is our honor, looking forward to your support.</p>
-                      <a href="#" class="button is-primary">Read More</a>
+                      <!-- <a href="#" class="button is-primary">Read More</a> -->
                     </div>
 
                   </div>

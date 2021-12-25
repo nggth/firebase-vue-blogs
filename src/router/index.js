@@ -44,6 +44,30 @@ const routes = [
       title: 'Forgot Password'
     }
   },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: () => import('../views/Profile.vue'),
+    meta: {
+      title: 'Profile'
+    }
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: () => import('../views/Admin.vue'),
+    meta: {
+      title: 'Admin'
+    }
+  },
+  {
+    path: '*',
+    name: 'Error',
+    component: () => import('../components/Error.vue'),
+    meta: {
+      title: 'Error'
+    }
+  },
 ];
 
 const router = new VueRouter({

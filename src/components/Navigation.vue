@@ -5,7 +5,7 @@
         <a class="navbar-item" href="../">
           <img src="../assets/logodesign1.png" alt="Logo">
         </a>
-        <span class="navbar-burger burger" data-target="navbarMenu" @click="isOpen = !isOpen" v-bind:class="{'is-active': isOpen}">
+        <span style="height: 3.5rem" class="navbar-burger burger" data-target="navbarMenu" @click="isOpen = !isOpen" v-bind:class="{'is-active': isOpen}">
           <span></span>
           <span></span>
           <span></span>
@@ -108,7 +108,7 @@ export default {
 
 <style>
 .navbar {
-    font-size: 1.1rem;
-    /* border-bottom: 0.5px solid  */
+    font-size: 1.2rem;
+    height: 3.5rem
 }
 </style>
