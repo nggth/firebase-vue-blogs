@@ -12,6 +12,33 @@ import {far} from '@fortawesome/free-regular-svg-icons'
 import {fas} from '@fortawesome/free-solid-svg-icons'
 import {library} from '@fortawesome/fontawesome-svg-core'
 
+import firebase from "firebase/app";
+import "firebase/auth";
+
+import VueTippy, { TippyComponent } from "vue-tippy";
+
+Vue.use(VueTippy);
+Vue.component("tippy", TippyComponent);
+
+// or
+Vue.use(VueTippy, {
+  directive: "tippy", // => v-tippy
+  flipDuration: 0,
+  popperOptions: {
+    modifiers: {
+      preventOverflow: {
+        enabled: false
+      }
+    }
+  }
+});
+
+import Toasted from 'vue-toasted'
+Vue.use(Toasted, {
+  singleton: true,
+  duration: '2000',
+})
+
 Vue.config.productionTip = false
 
 //FontAwesomeIcon
@@ -23,8 +50,13 @@ Vue.use(Buefy, {
   defaultIconPack: 'fas'
 })
 
-new Vue({
-  render: h => h(App),
-  router,
-  store: store,
-}).$mount('#app')
+let app;
+firebase.auth().onAuthStateChanged(() => {
+  if (!app) {
+    new Vue({
+      router,
+      store,
+      render: (h) => h(App),
+    }).$mount("#app");
+  }
+});

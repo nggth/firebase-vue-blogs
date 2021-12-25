@@ -1,29 +1,21 @@
 <template>
-  <div class="container">
-    <div class="section">
-      <div class="level-right">
-        <b-field>
-          <b-switch v-model="editPost" type="is-brand">
-              Default
-          </b-switch>
-        </b-field>
-      </div>
-      <div class="section">
-        <div class="row columns is-variable">
-          <BlogCard class="column is-3 mx-1" :post="post" v-for="(post, index) in sampleBlogCards" :key="index" />
-        </div>
-      </div>
-    </div>
+  <div class="blogs">
+    <b-field>
+      <b-switch v-model="editPost" type="is-brand">
+        Default
+      </b-switch>
+    </b-field>
+    <BlogCardBuilder />
   </div>
 </template>
 
 <script>
-import BlogCard from '../components/MainLayout/BlogCard.vue'
+import BlogCardBuilder from '../components/MainLayout/BlogCardBuilder.vue'
 
 export default {
   name: 'Blogs',
   components: {
-    BlogCard
+    BlogCardBuilder
   },
   computed: {
     sampleBlogCards() {
@@ -31,12 +23,12 @@ export default {
     },
     editPost: {
       get() {
-        return this.$store.state.editPost;
+        return this.$store.state.editPost
       },
       set(payload) {
-        this.$store.commit("tonggleEditPost", payload);
+        this.$store.commit("toggleEditPost", payload)
       }
-    }
+    },
   },
   beforeDestroy() {
     this.$store.commit("tonggleEditPost", false)

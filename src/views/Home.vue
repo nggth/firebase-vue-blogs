@@ -3,14 +3,7 @@
       <Banner />
       <About />
       <Article />
-      <div class="container is-fullwidth">
-          <div class="section">
-            <h2 class="title is-4">View more blog</h2>
-            <div class="row columns is-variable">
-              <BlogCard class="column is-3 mx-1" :post="post" v-for="(post, index) in sampleBlogCards" :key="index" />
-            </div>
-          </div>
-      </div>
+      <BlogCardBuilder />
   </div>
 </template>
 
@@ -19,14 +12,14 @@
 import Banner from '../components/MainLayout/Banner.vue'
 import About from '../components/MainLayout/About.vue'
 import Article from '../components/MainLayout/Article.vue'
-import BlogCard from '../components/MainLayout/BlogCard.vue'
+import BlogCardBuilder from '../components/MainLayout/BlogCardBuilder.vue'
 export default {
   name: 'Home',
   components: {
     Banner,
     About,
     Article,
-    BlogCard,
+    BlogCardBuilder,
   },
   data() {
     return {
@@ -37,27 +30,14 @@ export default {
         welcomeScreen: true,
         photo: "coding"
       },
-      sampleBlogPost: [
-        {
-          title: "This is a Filter Title",
-          blogHTML: "This is a Filter post title.",
-          blogCoverPhoto: "blog-phto1",
-        },
-        {
-          title: "This is a Filter Title",
-          blogHTML: "This is a Filter post title.",
-          blogCoverPhoto: "blog-phto2",
-        }
-      ],
+      
     }
   },
-  computed: {
-    sampleBlogCards() {
-      return this.$store.state.sampleBlogCards;
-    }
-  }
+  
 };
 </script>
 <style lang="css" scoped>
-
+.home {
+  background-color: #f3eaf5;
+}
 </style>

@@ -2,7 +2,8 @@
   <div class="register-login-bg">
     <Back />
     <section class="hero is-fullheight">
-      <!-- <Loading v-if="isLoading" /> -->
+      <Modal v-if="modalActive" :modalMessage="modalMessage" v-on:close-modal="closeModal" />
+      <Loading v-if="loading" />
       <div class="hero-body">
         <div class="container has-text-centered">
           <div class="column register-login-box is-4 pt-5">
@@ -24,7 +25,7 @@
                 <div class="field">
                   <div class="columns">
                     <div class="column is-10">
-                      <b-button class="button is-block is-info is-fullwidth" @click.prevent="confirmReset()">Reset</b-button>
+                      <b-button class="button is-block is-info is-fullwidth" @click.prevent="resetPassword()">Reset</b-button>
                     </div>
                     <div class="column is-2 mt-1">
                        <b-tooltip label="Back to login page" position="is-right" type="is-white">
@@ -45,33 +46,60 @@
 </template>
 
 <script>
-// import Loading from '../components/Loading.vue';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import Modal from '../components/Modal.vue';
+import Loading from '../components/Loading.vue';
 import Back from '../components/Back.vue';
 export default {
   name: 'ForgotPassword',
   components: {
-    // Loading,
+    Modal,
+    Loading,
     Back
   },
   data() {
     return {
       email: '',
-      isLoading: null,
+      modalActive: false,
+      modalMessage: '',
+      loading: null,
+
     }
   },
   methods: {
-    confirmReset() {
-      if(this.email.includes('@')) {
-        this.$buefy.dialog.alert({
-            title: 'Error',
-            message: 'Something\'s not good but I have a custom <b>icon</b> and <b>type</b>',
-            type: 'is-success',
+    resetPassword() {
+      this.loading = true;
+      firebase
+        .auth()
+        .sendPasswordResetEmail(this.email)
+        .then(() => {
+          this.modalMessage = "If your account exists, you will receive a email";
+          this.loading = false;
+          this.modalActive = true;
         })
-      }
-      else {
-        alert('Please enter your correct email syntax.')
-      }
+        .catch((err) => {
+          this.modalMessage = err.message;
+          this.loading = false;
+          this.modalActive = true;
+        });
     },
+    confirmReset() {
+      // if(this.email.includes('@')) {
+      //   this.$buefy.dialog.alert({
+      //       title: 'Error',
+      //       message: 'Something\'s not good but I have a custom <b>icon</b> and <b>type</b>',
+      //       type: 'is-success',
+      //   })
+      // }
+      // else {
+      //   alert('Please enter your correct email syntax.')
+      // }
+    },
+    closeModal() {
+      this.modalActive = !this.modalActive
+      this.email = ''
+    }
   }
 }
 </script>
