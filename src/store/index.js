@@ -37,6 +37,12 @@ export default new Vuex.Store({
       state.profileUsername = doc.data().username;
       console.log(state.profileId);
     },
+    changeName(state, payload) {
+      state.profileName = payload
+    },
+    changeUsername(state, payload) {
+      state.profileUsername = payload
+    },
   },
   actions: {
     async getCurrentUser({ commit }) {
@@ -45,6 +51,13 @@ export default new Vuex.Store({
       commit("setProfileInfo", dbResults);
       console.log(dbResults)
     },
+    async updateUserSetting({state}) {
+      const dataBase = await db.collection("users").doc(state.profileId)
+      await dataBase.update({
+        name: state.profileName,
+        username: state.profileUsername,
+      })
+    }
   },
   modules: {},
 });

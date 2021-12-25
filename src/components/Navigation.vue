@@ -39,7 +39,7 @@
                       </div>
                       <div class="level-item">
                         <div>
-                          <p class="is-size-5"> {{ this.$store.state.profileUsername }} </p>
+                          <p class="is-size-5"> {{ this.$store.state.profileName }} </p>
                         </div>
                       </div>
                     </div>

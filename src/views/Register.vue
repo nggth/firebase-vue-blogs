@@ -105,15 +105,13 @@ export default {
           return
         } catch (error) {
           this.$toasted.show(error, {
-            type: 'error',
-            duration: '2000',
+            type: 'error'
           })
           return
         }
       }
       this.$toasted.show('Please fill all the required fields.', {
-        type: 'error',
-        duration: '2000',
+        type: 'error'
       })
       return
     }

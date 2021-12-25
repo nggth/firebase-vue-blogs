@@ -22,7 +22,7 @@
                 <div class="field-body">
                   <div class="field">
                     <p class="control has-icons-left">
-                      <input class="input" type="text" placeholder="Name">
+                      <input class="input" type="text" placeholder="Name" autofocus="" v-model="name">
                       <span class="icon is-small is-left">
                         <i class="fas fa-user"></i>
                       </span>
@@ -32,7 +32,7 @@
               </div>
               <div class="field is-horizontal ">
                 <div class="field-label is-normal">
-                  <label class="label">Email</label>
+                  <label class="label">Username</label>
                 </div>
                 <div class="field-body">
                   <div class="field">
@@ -54,7 +54,7 @@
                 <div class="field-body">
                   <div class="field">
                     <p class="control has-icons-left">
-                      <input disabled class="input" type="email" placeholder="Email" value="alex@smith.com">
+                      <input disabled class="input" type="email" placeholder="Email" autofocus="" v-model="email">
                       <span class="icon is-small is-left">
                         <i class="fas fa-envelope"></i>
                       </span>
@@ -120,8 +120,8 @@
                 <div class="field-body">
                   <div class="field">
                     <div class="control">
-                      <button class="button is-primary">
-                        Send message
+                      <button class="button is-primary" @click="updateProfile()">
+                        Save
                       </button>
                     </div>
                   </div>
@@ -149,9 +149,40 @@ export default {
       activeTab: 0,
     }
   },
-  methods: {
-
+  computed: {
+    name: {
+      get() {
+        return this.$store.state.profileName
+      },
+      set(payload) {
+        this.$store.commit('changeName', payload)
+      }
+    },
+    username: {
+      get() {
+        return this.$store.state.profileUsername
+      },
+      set(payload) {
+        this.$store.commit('changeUsername', payload)
+      }
+    },
+    email: {
+      get() {
+        return this.$store.state.profileEmail
+      },
+      set(payload) {
+        this.$store.commit('changeEmail', payload)
+      }
+    }
   },
+  methods: {
+    updateProfile() {
+      this.$store.dispatch('updateUserSetting')
+      this.$toasted.show('Update successfully.', {
+        type: 'success'
+      })
+    }
+  }
 }
 </script>
 

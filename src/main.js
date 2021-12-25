@@ -35,7 +35,8 @@ Vue.use(VueTippy, {
 
 import Toasted from 'vue-toasted'
 Vue.use(Toasted, {
-  singleton: true
+  singleton: true,
+  duration: '2000',
 })
 
 Vue.config.productionTip = false
