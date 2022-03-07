@@ -21,6 +21,14 @@ const routes = [
     }
   },
   {
+    path: '/create',
+    name: 'CreateBlogs',
+    component: () => import('../views/CreateBlogs.vue'),
+    meta: {
+      title: 'Create Blogs'
+    }
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import('../views/Login.vue'),
@@ -71,8 +79,6 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
   routes,
 });
 

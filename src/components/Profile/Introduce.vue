@@ -43,6 +43,21 @@
           </div>
         </div>
       </div>
+      <div class="field is-horizontal" v-show="role === 'admin'">
+        <div class="field-label is-normal">
+          <label class="label">Role</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <p class="control has-icons-left">
+              <input class="input" type="text" placeholder="Role" autofocus="" v-model="role">
+              <span class="icon is-small is-left">
+                <i class="fas fa-user-tag"></i>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
       <div class="field is-horizontal ">
         <div class="field-label is-normal">
           <label class="label">Email</label>
@@ -63,49 +78,12 @@
           <label class="label">Number phone</label>
         </div>
         <div class="field-body">
-          <div class="field is-expanded">
-            <div class="field has-addons">
-              <p class="control">
-                <a class="button is-static">
-                  +84
-                </a>
-              </p>
-              <p class="control is-expanded">
-                <input class="input" type="tel" placeholder="Your phone number">
-              </p>
-            </div>
-            <p class="help">Do not enter the first zero</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Department</label>
-        </div>
-        <div class="field-body">
-          <div class="field is-narrow">
-            <div class="control">
-              <div class="select is-fullwidth">
-                <select>
-                  <option>Business development</option>
-                  <option>Marketing</option>
-                  <option>Sales</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Decription</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <div class="control">
-              <textarea class="textarea" placeholder="Describe a little about yourself."></textarea>
-            </div>
+          <div class="select is-link">
+            <select v-model="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="lgbt">LGBT</option>
+            </select>
           </div>
         </div>
       </div>
@@ -130,31 +108,34 @@
 <script>
 export default {
   name: 'introduce',
+  data() {
+    return {
+      male: '',
+      female: '',
+      lgbt: ''
+    }
+  },
   computed: {
     name: {
-      get() {
-        return this.$store.state.profileName
-      },
-      set(payload) {
-        this.$store.commit('changeName', payload)
-      }
+      get() { return this.$store.state.profileName },
+      set(payload) { this.$store.commit('changeName', payload) }
     },
     username: {
-      get() {
-        return this.$store.state.profileUsername
-      },
-      set(payload) {
-        this.$store.commit('changeUsername', payload)
-      }
+      get() { return this.$store.state.profileUsername },
+      set(payload) { this.$store.commit('changeUsername', payload) }
     },
     email: {
-      get() {
-        return this.$store.state.profileEmail
-      },
-      set(payload) {
-        this.$store.commit('changeEmail', payload)
-      }
-    }
+      get() { return this.$store.state.profileEmail },
+      set(payload) { this.$store.commit('changeEmail', payload) }
+    },
+    gender: {
+      get() { return this.$store.state.profileGender },
+      set(payload) { this.$store.commit('changeGender', payload) }
+    },
+    role: {
+      get() { return this.$store.state.profileRole },
+      set(payload) { this.$store.commit('changeRole', payload) }
+    },
   },
   methods: {
     updateProfile() {

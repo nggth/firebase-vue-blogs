@@ -14,12 +14,22 @@ export default new Vuex.Store({
       { blogTitle: "Blog card 3", blogCoverPhoto: "stock-3", blogDate: "November 21, 2021"},
       { blogTitle: "Blog card 4", blogCoverPhoto: "stock-4", blogDate: "November 21, 2021"},
     ],
+    blogHTML: 'Write your blog title here...',
+    blogTitle: '',
+    blogPhotoName: null,
+    blogPhotoReview: null,
     editPost: null,
     user: null,
+    
     profileEmail: null,
     profileName: null,
     profileUsername: null,
     profileId: null,
+    
+    profileGender: [ 'male', 'female', 'lgbt' ],
+    profileRole: [ 'member', 'admin' ],
+    profileDescription: null,
+    profileSkinType: null,
   },
   getters: {
   },
@@ -35,6 +45,10 @@ export default new Vuex.Store({
       state.profileEmail = doc.data().email;
       state.profileName = doc.data().name
       state.profileUsername = doc.data().username;
+      state.profileGender = doc.data().gender;
+      state.profileRole = doc.data().role;
+      state.profileDescription = doc.data().description;
+      state.profileSkinType = doc.data().skinType;
       console.log(state.profileId);
     },
     changeName(state, payload) {
@@ -43,6 +57,18 @@ export default new Vuex.Store({
     changeUsername(state, payload) {
       state.profileUsername = payload
     },
+    changeRole(state, payload) {
+      state.profileRole = payload
+    },
+    changeGender(state, payload) {
+      state.profileGender = payload
+    },
+    changeDescription(state, payload) {
+      state.profileDescription = payload
+    },
+    changeSkinType(state, payload) {
+      state.profileSkinType = payload
+    }
   },
   actions: {
     async getCurrentUser({ commit }) {
@@ -56,6 +82,10 @@ export default new Vuex.Store({
       await dataBase.update({
         name: state.profileName,
         username: state.profileUsername,
+        gender: state.profileGender,
+        role: state.profileRole,
+        description: state.profileDescription,
+        skinType: state.profileSkinType
       })
     }
   },
