@@ -3,7 +3,7 @@
     <div class="container">
       <div class="navbar-brand">
         <a class="navbar-item" href="../">
-          <img src="../assets/logodesign1.png" alt="Logo">
+          <img src="../assets/group.png" alt="Logo">
         </a>
         <span style="height: 3.5rem" class="navbar-burger burger" data-target="navbarMenu" @click="isOpen = !isOpen" v-bind:class="{'is-active': isOpen}">
           <span></span>
