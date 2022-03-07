@@ -81,6 +81,11 @@ export default {
       email: '',
       username: '',
       password: '',
+
+      role: 'member',
+      description: '',
+      skinType: '',
+      
       error: null,
       errorMsg: '',
       loading: null
@@ -100,6 +105,9 @@ export default {
             name:  this.name,
             email: this.email,
             username: this.username,
+            role: this.role,
+            description: this.description,
+            skinType: this.skinType,
           })
           this.$router.push({ name: 'Home' })
           return

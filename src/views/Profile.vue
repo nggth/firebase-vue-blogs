@@ -6,14 +6,7 @@
           <Introduce />
         </b-tab-item>
         <b-tab-item label="About your skin">
-          Lorem <br>
-          ipsum <br>
-          dolor <br>
-          sit <br>
-          amet.
-        </b-tab-item>
-        <b-tab-item label="Setting">
-          <Setting />
+          <Skin />
         </b-tab-item>
       </b-tabs>
     </div>
@@ -22,11 +15,11 @@
 
 <script>
 import Introduce from '../components/Profile/Introduce.vue'
-import Setting from '../components/Profile/Setting.vue'
+import Skin from '../components/Profile/Skin.vue'
 export default {
   components: {
     Introduce,
-    Setting
+    Skin
   },
   data() {
     return {

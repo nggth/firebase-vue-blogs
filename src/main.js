@@ -19,7 +19,6 @@ import VueTippy, { TippyComponent } from "vue-tippy";
 
 Vue.use(VueTippy);
 Vue.component("tippy", TippyComponent);
-
 // or
 Vue.use(VueTippy, {
   directive: "tippy", // => v-tippy
@@ -32,6 +31,9 @@ Vue.use(VueTippy, {
     }
   }
 });
+
+import Vue2Editor from "vue2-editor";
+Vue.use(Vue2Editor);
 
 import Toasted from 'vue-toasted'
 Vue.use(Toasted, {

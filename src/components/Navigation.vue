@@ -15,7 +15,7 @@
         <div class="navbar-start">
           <router-link class="navbar-item" :to="{name: 'Home'}">Home</router-link>
           <router-link class="navbar-item" :to="{name: 'Blogs'}">Blogs</router-link>
-          <router-link class="navbar-item" to="/">Create Blogs</router-link>
+          <router-link class="navbar-item" :to="{name: 'CreateBlogs'}">Create Blogs</router-link>
         </div>
         <div class="navbar-end">
           <div v-if="user" class="navbar-item dropdown is-hoverable">
@@ -101,6 +101,7 @@ export default {
     signOut() {
       firebase.auth().signOut()
       window.location.reload()
+      this.$route.name === "/"
     }
   }
 }
