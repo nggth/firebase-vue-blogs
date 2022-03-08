@@ -89,6 +89,9 @@ export default {
           this.error = false;
           this.errorMsg = "";
           console.log(firebase.auth().currentUser.uid);
+          this.$toasted.show('Login successfully.', {
+            type: 'success'
+          })
         })
         .catch((err) => {
           this.error = true;

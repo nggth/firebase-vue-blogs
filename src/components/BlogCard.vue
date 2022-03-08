@@ -22,6 +22,7 @@
           <div class="card">
               <div class="card-image pt-3">
                   <figure class="image is-16by9">
+                      <!-- <img :src="require(`../assets/img/blogCards/${post.blogCoverPhoto}.jpg`)" atl="" /> -->
                       <img :src="require(`../assets/img/blogCards/${post.blogCoverPhoto}.jpg`)" atl="" />
                   </figure>
               </div>

@@ -100,8 +100,13 @@ export default {
   methods: {
     signOut() {
       firebase.auth().signOut()
-      window.location.reload()
-      this.$route.name === "/"
+      .then(() => {
+        this.$toasted.show('Logout successfully.', {
+          type: 'success'
+        })
+        window.location.reload()
+        this.$route.name === "/"
+      })
     }
   }
 }

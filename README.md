@@ -12,5 +12,5 @@ yarn serve
 
 ### Storage for testing
 ```
-https://bitly.com.vn/pcyxa8
+https://docs.google.com/spreadsheets/d/1yI13Cq2pULRr_WuadkLMhDPrCVhdyPzUpN8VLU7xcQc/edit#gid=0
 ```
