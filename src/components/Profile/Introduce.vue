@@ -75,7 +75,7 @@
       </div>
       <div class="field is-horizontal">
         <div class="field-label is-normal">
-          <label class="label">Number phone</label>
+          <label class="label">Sex</label>
         </div>
         <div class="field-body">
           <div class="select is-link">
