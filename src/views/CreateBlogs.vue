@@ -25,14 +25,15 @@
           <div class="field">
             <div class="file is-normal has-name">
               <label class="file-label">
-                <input class="file-input" type="file" ref="blogPhoto" id="blogPhoto" accept=".png, .jpg, .jpeg" />
+                <input class="file-input" type="file" ref="blogPhoto" id="blog-photo" @change="fileChange" accept=".png, .jpg, .jpeg" />
                 <span class="file-cta">
                   <span class="file-icon">
                     <i class="fas fa-upload"></i>
                   </span>
                 </span>
                 <span class="file-name">
-                  {{ blogPhotoName || 'No photo' }}
+                  <!-- {{ blogPhotoName || 'No photo' }} -->
+                  {{ this.$store.state.blogPhotoName || 'No photo'  }}
                 </span>
               </label>
               <div class="ml-3">
@@ -82,27 +83,47 @@
 </template>
 
 <script>
-import Quill from 'quill'
+import Quill from 'quill';
 window.Quill = Quill
-// console.log(window.Quill)
-import ImageResize from 'quill-image-resize-module'
-
-Quill.register('modules/imageResize', ImageResize)
+const ImageResize = require('quill-image-resize-module').default
+Quill.register('modules/imageResize', ImageResize);
 
 export default {
   name: 'CreateBlogs',
   data() {
     return {
-      blogTitle: '',
+      file: '',
       editorSettings: {
-          modules: {
-            imageResize: {}
-          }
+        modules: {
+          imageResize: {}
         }
+      },
+      blogPhoto: ''
+    }
+  },
+  methods: {
+    fileChange() {
+      this.file = this.$refs.blogPhoto.files[0]
+      const fileName = this.file.name
+      this.$store.commit('fileNameChange', fileName)
+      this.$store.commit('createFileURL', URL.createObjectURL(this.file))
     }
   },
   computed: {
+    profileId() { return this.$store.state.profileId },
     blogPhotoName() { return this.$store.state.blogPhotoName },
+    blogTitle: {
+      get() { return this.$store.state.blogTitle },
+      set(payload) {
+        this.$store.commit("updateBlogTitle", payload);
+      }
+    },
+    blogHTML: {
+      get() { return this.$store.state.blogHTML },
+      set(payload) {
+        this.$store.commit("newBlogPost", payload);
+      }
+    },
     blogPhotoFileURL() { return this.$store.state.blogPhotoFileURL}
   }
 }

@@ -84,8 +84,10 @@ const router = new VueRouter({
 
 // Name of pages
 router.beforeEach((to, from, next) => {
-  document.title = `${to.meta.title} | FireBlogs`
+  document.title = `${to.meta.title} | Cecilia`
   next()
+
+  //require login
 })
 
 export default router;

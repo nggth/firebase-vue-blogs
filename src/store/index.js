@@ -16,7 +16,8 @@ export default new Vuex.Store({
     ],
     blogHTML: 'Write your blog title here...',
     blogTitle: '',
-    blogPhotoName: null,
+    blogPhotoName: '',
+    blogPhotoFileURL: null,
     blogPhotoReview: null,
     editPost: null,
     user: null,
@@ -26,7 +27,7 @@ export default new Vuex.Store({
     profileUsername: null,
     profileId: null,
     
-    profileGender: [ 'male', 'female', 'lgbt' ],
+    profileGender: [ 'male', 'female', 'other' ],
     profileRole: [ 'member', 'admin' ],
     profileDescription: null,
     profileSkinType: null,
@@ -34,6 +35,19 @@ export default new Vuex.Store({
   getters: {
   },
   mutations: {
+    newBlogPost(state, payload) {
+      state.blogHTML = payload
+      console.log(state.blogHTML)
+    },
+    updateBlogTitle(state, payload) {
+      state.blogTitle = payload
+    },
+    fileNameChange(state, payload) {
+      state.blogPhotoName = payload
+    },
+    createFileURL(state, payload) {
+      state.blogPhotoFileURL = payload
+    },
     toggleEditPost(state, payload) {
       state.editPost = payload;
     },

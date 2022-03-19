@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-image">
       <figure class="image is-4by3">
-        <img :src="require(`../assets/img/blogCards/${post.blogCoverPhoto}.jpg`)" atl="" />
+        <img :src="require(`../../assets/img/blogCards/${post.blogCoverPhoto}.jpg`)" atl="" />
       </figure>
       <div class="card-content is-overlay">
         <div v-show="editPost">
@@ -22,7 +22,7 @@
           <div class="card">
               <div class="card-image pt-3">
                   <figure class="image is-16by9">
-                      <img :src="require(`../assets/img/blogCards/${post.blogCoverPhoto}.jpg`)" atl="" />
+                      <img :src="require(`../../assets/img/blogCards/${post.blogCoverPhoto}.jpg`)" atl="" />
                   </figure>
               </div>
               <div class="card-content ml-2">
