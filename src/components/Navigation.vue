@@ -104,8 +104,9 @@ export default {
         this.$toasted.show('Logout successfully.', {
           type: 'success'
         })
+        this.user === null
+        this.$router.push({ name: 'Home' })
         window.location.reload()
-        this.$route.name === "/"
       })
     }
   }
