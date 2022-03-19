@@ -75,14 +75,14 @@
       </div>
       <div class="field is-horizontal">
         <div class="field-label is-normal">
-          <label class="label">Sex</label>
+          <label class="label">Gender</label>
         </div>
         <div class="field-body">
           <div class="select is-link">
             <select v-model="gender">
                 <option value="male">Male</option>
                 <option value="female">Female</option>
-                <option value="lgbt">LGBT</option>
+                <option value="other">Other</option>
             </select>
           </div>
         </div>

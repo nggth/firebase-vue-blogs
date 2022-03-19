@@ -27,7 +27,7 @@ export default new Vuex.Store({
     profileUsername: null,
     profileId: null,
     
-    profileGender: [ 'male', 'female', 'lgbt' ],
+    profileGender: [ 'male', 'female', 'other' ],
     profileRole: [ 'member', 'admin' ],
     profileDescription: null,
     profileSkinType: null,
