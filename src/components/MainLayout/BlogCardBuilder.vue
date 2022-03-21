@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import BlogCard from '../BlogCard.vue'
+import BlogCard from '../../components/Blog/BlogCard.vue'
 export default {
   components: { 
     BlogCard
