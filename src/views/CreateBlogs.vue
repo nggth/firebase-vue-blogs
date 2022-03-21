@@ -53,7 +53,7 @@
           <div class="field">
             <div class="control">
               <div class="editor">
-                <vue-editor :editorOptions="editorSettings" v-model="blogHTML" useCustomImageHandler/>
+                <vue-editor :editorOptions="editorSettings" v-model="blogHTML" useCustomImageHandler @image-added="imageHandler" />
               </div>
             </div>
           </div>
@@ -87,6 +87,8 @@ import Quill from 'quill';
 window.Quill = Quill
 const ImageResize = require('quill-image-resize-module').default
 Quill.register('modules/imageResize', ImageResize);
+import firebase from "firebase/app";
+import "firebase/storage";
 
 export default {
   name: 'CreateBlogs',
@@ -107,6 +109,29 @@ export default {
       const fileName = this.file.name
       this.$store.commit('fileNameChange', fileName)
       this.$store.commit('createFileURL', URL.createObjectURL(this.file))
+    },
+
+    openPreview() {
+      this.$store.commit("openPhotoPreview");
+    },
+    
+    imageHandler(file, Editor, cursorLocation, resetUploader) {
+      const storageRef = firebase.storage().ref();
+      const docRef = storageRef.child(`documents/blogPostPhotos/${file.name}`);
+      docRef.put(file).on(
+        "state_changed",
+        (snapshot) => {
+          console.log(snapshot);
+        },
+        (err) => {
+          console.log(err);
+        },
+        async () => {
+          const downloadURL = await docRef.getDownloadURL();
+          Editor.insertEmbed(cursorLocation, "image", downloadURL);
+          resetUploader();
+        }
+      )
     }
   },
   computed: {
@@ -124,7 +149,8 @@ export default {
         this.$store.commit("newBlogPost", payload);
       }
     },
-    blogPhotoFileURL() { return this.$store.state.blogPhotoFileURL}
+    blogPhotoFileURL() { return this.$store.state.blogPhotoFileURL},
+    
   }
 }
 </script>

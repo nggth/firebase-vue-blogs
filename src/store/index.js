@@ -82,7 +82,10 @@ export default new Vuex.Store({
     },
     changeSkinType(state, payload) {
       state.profileSkinType = payload
-    }
+    },
+    openPhotoPreview(state) {
+      state.blogPhotoPreview = !state.blogPhotoPreview;
+    },
   },
   actions: {
     async getCurrentUser({ commit }) {
