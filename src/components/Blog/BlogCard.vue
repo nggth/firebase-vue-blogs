@@ -18,33 +18,33 @@
         </a>
         <p>{{post.blogDate}}</p>
         
-        <b-modal v-model="isCardModalActive" :width="640" scroll="keep">
-          <div class="card">
-              <div class="card-image pt-3">
-                  <figure class="image is-16by9">
-                      <img :src="require(`../../assets/img/blogCards/${post.blogCoverPhoto}.jpg`)" atl="" />
-                  </figure>
-              </div>
-              <div class="card-content ml-2">
-                <div class="media">
-                  <div class="media-content">
-                    <h4>{{post.blogTitle}}</h4>
-                    <p>{{post.blogDate}}</p>
-                  </div>
-                </div>
-
-                <div class="content">
-                  <router-link class="link" to="#">
-                    <b-button class="button is-link is-brand px-2">
-                      View the post
-                    </b-button>
-                  </router-link>
-                </div>
-              </div>
-          </div>
-        </b-modal>
       </div>
     </div>
+    <b-modal v-model="isCardModalActive" :width="640" scroll="keep">
+      <div class="card">
+          <div class="card-image pt-3">
+              <figure class="image is-16by9">
+                  <img :src="require(`../../assets/img/blogCards/${post.blogCoverPhoto}.jpg`)" atl="" />
+              </figure>
+          </div>
+          <div class="card-content ml-2">
+            <div class="media">
+              <div class="media-content">
+                <h4>{{post.blogTitle}}</h4>
+                <p>{{post.blogDate}}</p>
+              </div>
+            </div>
+
+            <div class="content">
+              <router-link class="link" to="#">
+                <b-button class="button is-link is-brand px-2">
+                  View the post
+                </b-button>
+              </router-link>
+            </div>
+          </div>
+      </div>
+    </b-modal>
   </div>
 </template>
 

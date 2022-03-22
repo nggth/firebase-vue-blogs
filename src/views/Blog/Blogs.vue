@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import BlogCardBuilder from '../components/MainLayout/BlogCardBuilder.vue'
+import BlogCardBuilder from '../../components/MainLayout/BlogCardBuilder.vue'
 
 export default {
   name: 'Blogs',
