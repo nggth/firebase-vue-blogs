@@ -31,6 +31,8 @@ export default new Vuex.Store({
     profileRole: [ 'member', 'admin' ],
     profileDescription: null,
     profileSkinType: null,
+
+    info: []
   },
   getters: {
   },
@@ -65,23 +67,15 @@ export default new Vuex.Store({
       state.profileSkinType = doc.data().skinType;
       console.log(state.profileId);
     },
-    changeName(state, payload) {
-      state.profileName = payload
-    },
-    changeUsername(state, payload) {
-      state.profileUsername = payload
-    },
-    changeRole(state, payload) {
-      state.profileRole = payload
-    },
-    changeGender(state, payload) {
-      state.profileGender = payload
-    },
-    changeDescription(state, payload) {
-      state.profileDescription = payload
-    },
-    changeSkinType(state, payload) {
-      state.profileSkinType = payload
+    changeInfo(state, payload) {
+      state.info.push({
+        profileName: payload.profileName,
+        profileUsername: payload.profileUsername,
+        role: payload.role,
+        profileGender: payload.profileGender,
+        profileDescription: payload.profileDescription,
+        skinType: payload.skinType
+      })
     },
     openPhotoPreview(state) {
       state.blogPhotoPreview = !state.blogPhotoPreview;

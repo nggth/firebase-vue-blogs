@@ -29,15 +29,15 @@ export default {
 
 <style lang="scss" scoped>
 .error-page {
-  background-image: url('../assets/img/error/error2.jpg');
-  background-position: center center;
-  background-repeat:  no-repeat;
-  background-attachment: fixed;
-  background-size:  cover;
-  background-color: #999;
+  // background-image: url('../assets/img/error/error2.jpg');
+  // background-position: center center;
+  // background-repeat:  no-repeat;
+  // background-attachment: fixed;
+  // background-size:  cover;
+  background-color: #f3eaf5;
   .box {
     background: rgba(19, 18, 18, 0.3);
-    box-shadow: 5px 5px 8px #ecd4ff, -2px -2px 8px #ecd4ff;
+    // box-shadow: 5px 5px 8px #ecd4ff, -2px -2px 8px #ecd4ff;
   }
 }
 </style>

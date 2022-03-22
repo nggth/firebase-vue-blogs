@@ -118,23 +118,23 @@ export default {
   computed: {
     name: {
       get() { return this.$store.state.profileName },
-      set(payload) { this.$store.commit('changeName', payload) }
+      set(payload) { this.$store.commit('changeInfo', payload) }
     },
     username: {
       get() { return this.$store.state.profileUsername },
-      set(payload) { this.$store.commit('changeUsername', payload) }
+      set(payload) { this.$store.commit('changeInfo', payload) }
     },
     email: {
       get() { return this.$store.state.profileEmail },
-      set(payload) { this.$store.commit('changeEmail', payload) }
+      set(payload) { this.$store.commit('changeInfo', payload) }
     },
     gender: {
       get() { return this.$store.state.profileGender },
-      set(payload) { this.$store.commit('changeGender', payload) }
+      set(payload) { this.$store.commit('changeInfo', payload) }
     },
     role: {
       get() { return this.$store.state.profileRole },
-      set(payload) { this.$store.commit('changeRole', payload) }
+      set(payload) { this.$store.commit('changeInfo', payload) }
     },
   },
   methods: {

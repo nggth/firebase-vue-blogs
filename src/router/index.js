@@ -15,17 +15,25 @@ const routes = [
   {
     path: '/blogs',
     name: 'Blogs',
-    component: () => import('../views/Blogs.vue'),
+    component: () => import('../views/Blog/Blogs.vue'),
     meta: {
       title: 'Blogs'
     }
   },
   {
-    path: '/create',
+    path: '/create-blogs',
     name: 'CreateBlogs',
-    component: () => import('../views/CreateBlogs.vue'),
+    component: () => import('../views/Blog/CreateBlogs.vue'),
     meta: {
       title: 'Create Blogs'
+    }
+  },
+  {
+    path: '/post-preview',
+    name: 'BlogPreview',
+    component: () => import('../views/Blog/BlogPreview.vue'),
+    meta: {
+    title: 'Blog Preview'
     }
   },
   {
