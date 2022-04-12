@@ -71,12 +71,12 @@ export default {
   data() {
     const user = firebase.auth().currentUser
     return {
+      user,
       email: '',
       password: '',
-      error: null,
-      errorMsg: '',
       loading: null,
-      user
+      // error: null,
+      // errorMsg: ''
     }
   },
   methods: {
@@ -86,16 +86,17 @@ export default {
         .signInWithEmailAndPassword(this.email, this.password)
         .then(() => {
           this.$router.push({ name: 'Home' });
-          this.error = false;
-          this.errorMsg = "";
-          console.log(firebase.auth().currentUser.uid);
+          // this.error = false;
+          // this.errorMsg = "";
+          // console.log(firebase.auth().currentUser.uid);
           this.$toasted.show('Login successfully.', {
             type: 'success'
           })
         })
-        .catch((err) => {
-          this.error = true;
-          this.errorMsg = err.message;
+        .catch(() => {
+          this.$toasted.show('Login unsuccessfully.', {
+            type: 'error'
+          })
         });
     },
   },

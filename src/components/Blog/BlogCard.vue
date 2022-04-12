@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-image">
       <figure class="image is-4by3">
-        <img :src="require(`../../assets/img/blogCards/${post.blogCoverPhoto}.jpg`)" atl="" />
+        <img :src="post.blogCoverPhoto" atl="" />
       </figure>
       <div class="card-content is-overlay">
         <div v-show="editPost">
@@ -22,27 +22,28 @@
     </div>
     <b-modal v-model="isCardModalActive" :width="640" scroll="keep">
       <div class="card">
-          <div class="card-image pt-3">
-              <figure class="image is-16by9">
-                  <img :src="require(`../../assets/img/blogCards/${post.blogCoverPhoto}.jpg`)" atl="" />
-              </figure>
-          </div>
-          <div class="card-content ml-2">
-            <div class="media">
-              <div class="media-content">
-                <h4>{{post.blogTitle}}</h4>
-                <p>{{post.blogDate}}</p>
-              </div>
+        <div class="card-image pt-3">
+          <figure class="image is-16by9">
+              <!-- <img :src="require(`../../assets/img/blogCards/${post.blogCoverPhoto}.jpg`)" atl="" /> -->
+              <img :src="post.blogCoverPhoto" atl="" />
+          </figure>
+        </div>
+        <div class="card-content ml-2">
+          <div class="media">
+            <div class="media-content">
+              <h4>{{post.blogTitle}}</h4>
+              <p>Posted on: {{ new Date(post.blogDate).toLocaleString('en-us', { dateStyle: 'long' }) }}</p>
             </div>
+          </div>
 
-            <div class="content">
-              <router-link class="link" to="#">
-                <b-button class="button is-link is-brand px-2">
-                  View the post
-                </b-button>
-              </router-link>
-            </div>
+          <div class="content">
+            <router-link class="link" to="#">
+              <b-button class="button is-link is-brand px-2">
+                View the post
+              </b-button>
+            </router-link>
           </div>
+        </div>
       </div>
     </b-modal>
   </div>

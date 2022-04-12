@@ -3,9 +3,9 @@
     <div class="blog-content columns is-vcentered">
       <div class="column is-6">
         <h2 class="title is-3" v-if="post.welcomeScreen">{{post.title}}</h2>
-        <h2 class="title is-3" v-else>{{post.title}}</h2>
+        <h2 class="title is-3" v-else>{{post.blogTitle}}</h2>
         <p v-if="post.welcomeScreen">{{post.blogPost}}</p>
-        <p class="content-preview" v-else>{{post.blogHTML}}</p>
+        <p class="content-preview" v-else v-html="post.blogHTML"></p>
         <router-link class="link light-link" v-if="post.welcomeScreen" to="#">
           Login/Register
           <b-icon icon="chevron-right"></b-icon>
@@ -18,7 +18,8 @@
       <hr class="line">
       <div class="blog-photo column is-6">
         <img v-if="post.welcomeScreen" :src="require(`../assets/img/blogPhotos/${post.photo}.jpg`)" atl="" />
-        <img v-else :src="require(`../assets/img/blogPhotos/${post.blogCoverPhoto}.jpg`)" atl="" />
+        <!-- <img v-else :src="require(`../assets/img/blogPhotos/${post.blogCoverPhoto}.jpg`)" atl="" /> -->
+        <img v-else :src="post.blogCoverPhoto" atl="" />
       </div>
     </div>
 

@@ -1,6 +1,7 @@
 <template>
-  <div class="columns section">
+  <section class="columns">
     <div class="column is-9">
+      <Loading v-show="loading" />
       <div class="field is-horizontal">
         <div class="field-label is-normal">
           <label class="label">Title</label>
@@ -17,6 +18,7 @@
 
         </div>
       </div>
+
       <div class="field is-horizontal">
         <div class="field-label is-normal">
           <label class="label">Photo</label>
@@ -37,7 +39,7 @@
                 </span>
               </label>
               <div class="ml-3">
-                <button class="button is-infp" :class="{'button-inactive': !blogPhotoFileURL}" @click="isCardModalActive = true">
+                <button class="button is-infp" :disabled="!blogPhotoFileURL" @click="isCardModalActive = true">
                   Preview...
                 </button>
               </div>
@@ -61,6 +63,7 @@
           </div>
         </div>
       </div>
+
       <div class="field is-horizontal">
         <div class="field-label is-normal">
           <label class="label">Decription</label>
@@ -83,7 +86,7 @@
           <div class="field">
             <div class="control">
               <div class="buttons">
-                <router-link class="button is-primary" :to="{ name: 'BlogPreview' }">Publish blog</router-link>
+                <button class="button is-primary" @click="uploadBlog">Publish blog</button>
                 <router-link class="button is-link" :to="{ name: 'BlogPreview' }">Preview blog</router-link>
               </div>
             </div>
@@ -91,7 +94,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -99,11 +102,18 @@ import Quill from 'quill';
 window.Quill = Quill
 const ImageResize = require('quill-image-resize-module').default
 Quill.register('modules/imageResize', ImageResize);
+
 import firebase from "firebase/app";
 import "firebase/storage";
+import db from "../../firebase/firebaseConfig"
+
+import Loading from  '../../components/Loading.vue'
 
 export default {
   name: 'CreateBlogs',
+  components: {
+    Loading
+  },
   data() {
     return {
       file: '',
@@ -113,7 +123,9 @@ export default {
         }
       },
       blogPhoto: '',
-      isCardModalActive: false
+      isCardModalActive: false,
+      error: null,
+      loading: null
     }
   },
   methods: {
@@ -148,7 +160,48 @@ export default {
     },
 
     uploadBlog() {
-      
+      this.loading = true;
+      if (this.blogTitle.length !== 0 && this.blogHTML.length !== 0) {
+        if (this.file) {
+          const storageRef = firebase.storage().ref()
+          const docRef = storageRef.child(`documents/BlogCoverPhotos/${this.$store.state.blogPhotoName}`)
+          docRef.put(this.file).on('state_changed', (snapshot) => {
+            console.log(snapshot)
+          }, (err) => {
+            console.log(err)
+            this.loading = false
+          }, async () => {
+            const downloadURL = await docRef.getDownloadURL()
+            const timestamp = await Date.now()
+            const database = await db.collection("blogPosts").doc()
+
+            await database.set({
+              blogID: database.id,
+              blogHTML: this.blogHTML,
+              blogCoverPhoto: downloadURL,
+              blogPhotoName: this.blogPhotoName,
+              blogTitle: this.blogTitle,
+              profileId: this.profileId,
+              date: timestamp,
+            })
+            this.loading = false
+            this.$router.push({ name: 'ViewBlog'})
+          })
+          return
+        }
+        else {
+          this.loading = false
+          this.$toasted.show('Please upload a cover photo.', {
+            type: 'error'
+          })
+        }
+      }
+      else {
+        this.loading = false
+        this.$toasted.show('Please ensure Blog Title and Blog Post has been filled.', {
+          type: 'error'
+        })
+      }
     }
   },
   computed: {

@@ -1,42 +1,29 @@
 <template>
-  <div class="container">
-    <div class="card">
-      <div class="header">
-        <div class="media">
-          <div class="media-left">
-            <figure class="image is-48x48">
-              <img src="https://source.unsplash.com/random/96x96" alt="Placeholder image">
+  <section class="hero ">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-8 is-offset-2">
+            <figure class="image is-16by9">
+              <img :src="blogCoverPhoto" alt="" />
             </figure>
           </div>
-          <div class="media-content">
-            <p class="title is-4">{{ this.blogTitle }} </p>
-            <p class="subtitle is-6">timing</p>
-          </div>
         </div>
-      </div>
-      <div class="card-image">
-        <img :src="blogCoverPhoto" alt="" />
-      </div>
-      <div class="card-content">
-        <div class="level is-mobile">
-          <div class="level-left">
-            <div class="level-item has-text-centered">
-              <a href="">
-                <i class="material-icons">favorite_border</i>
-              </a>
-            </div>
-            <div class="level-item has-text-centered">
-              <div>
-                <a href="">
-                  <i class="material-icons">chat_bubble_outline</i>
-                </a>
+
+        <section class="section">
+          <div class="columns">
+            <div class="column is-8 is-offset-2">
+              <div class="content is-medium">
+                <h1 class="title">{{ this.blogTitle }} </h1>
+                <h2 class="subtitle is-4">December 25, 2022</h2>
+                <div class="post-content ql-editor" v-html="blogHTML"></div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 

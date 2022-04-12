@@ -8,12 +8,14 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    sampleBlogCards: [
-      { blogTitle: "Blog card 1", blogCoverPhoto: "stock-1", blogDate: "November 21, 2021"},
-      { blogTitle: "Blog card 2", blogCoverPhoto: "stock-2", blogDate: "November 21, 2021"},
-      { blogTitle: "Blog card 3", blogCoverPhoto: "stock-3", blogDate: "November 21, 2021"},
-      { blogTitle: "Blog card 4", blogCoverPhoto: "stock-4", blogDate: "November 21, 2021"},
-    ],
+    // sampleBlogCards: [
+    //   { blogTitle: "Blog card 1", blogCoverPhoto: "stock-1", blogDate: "November 21, 2021"},
+    //   { blogTitle: "Blog card 2", blogCoverPhoto: "stock-2", blogDate: "November 21, 2021"},
+    //   { blogTitle: "Blog card 3", blogCoverPhoto: "stock-3", blogDate: "November 21, 2021"},
+    //   { blogTitle: "Blog card 4", blogCoverPhoto: "stock-4", blogDate: "November 21, 2021"},
+    // ],
+    blogPosts: [],
+    postLoaded: null,
     blogHTML: 'Write your blog title here...',
     blogTitle: '',
     blogPhotoName: '',
@@ -35,6 +37,12 @@ export default new Vuex.Store({
     info: []
   },
   getters: {
+    // blogPostsFeed(state) {
+    //   return state.blogPosts.slice(0, 2)
+    // },
+    blogPostsCards(state) {
+      return state.blogPosts.slice(2, 6)
+    }
   },
   mutations: {
     newBlogPost(state, payload) {
@@ -98,7 +106,25 @@ export default new Vuex.Store({
         description: state.profileDescription,
         skinType: state.profileSkinType
       })
-    }
+    },
+    async getPost({ state }) {
+      const dataBase = await db.collection("blogPosts").orderBy("date", "desc");
+      const dbResults = await dataBase.get();
+      dbResults.forEach((doc) => {
+        if (!state.blogPosts.some((post) => post.blogID === doc.id)) {
+          const data = {
+            blogID: doc.data().blogID,
+            blogHTML: doc.data().blogHTML,
+            blogCoverPhoto: doc.data().blogCoverPhoto,
+            blogTitle: doc.data().blogTitle,
+            blogDate: doc.data().date,
+            blogCoverPhotoName: doc.data().blogCoverPhotoName,
+          };
+          state.blogPosts.push(data);
+        }
+      });
+      state.postLoaded = true;
+    },
   },
   modules: {},
 });

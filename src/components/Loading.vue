@@ -1,7 +1,7 @@
 <template>
-  <div class="loading">
+  <section class="loading">
     <span></span>
-  </div>
+  </section>
 </template>
 
 <script>

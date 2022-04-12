@@ -37,6 +37,14 @@ const routes = [
     }
   },
   {
+    path: '/view-blog',
+    name: 'ViewBlog',
+    component: () => import('../views/Blog/ViewBlog.vue'),
+    meta: {
+    title: 'View Blog'
+    }
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import('../views/Login.vue'),

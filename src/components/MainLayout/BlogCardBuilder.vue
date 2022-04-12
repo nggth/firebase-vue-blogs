@@ -8,7 +8,8 @@
           </router-link>
       </div>
       <div class="row columns is-variable">
-        <BlogCard class="column is-3 mx-1" :post="post" v-for="(post, index) in sampleBlogCards" :key="index" />
+        <!-- <BlogCard class="column is-3 mx-1" :post="post" v-for="(post, index) in blogPosts" :key="index" /> -->
+        <BlogCard class="column is-3 mx-1" :post="post" v-for="(post, index) in blogPostsCards" :key="index" />
       </div>
     </div>
   </div>
@@ -37,9 +38,12 @@ export default {
     }
   },
   computed: {
-    sampleBlogCards() {
-      return this.$store.state.sampleBlogCards;
-    }
+    blogPosts() {
+      return this.$store.getters.blogPosts;
+    },
+    blogPostsCards() {
+      return this.$store.getters.blogPostsCards;
+    },
   }
 }
 </script>
