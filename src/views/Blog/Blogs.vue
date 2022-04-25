@@ -1,23 +1,22 @@
 <template>
-<section class="columns">
-    <div class="column is-9">
-      <div class="blogs">
-        <b-field>
-          <b-switch v-model="editPost" type="is-brand">
-            Default
-          </b-switch>
-        </b-field>
-        <!-- <router-link :to="{ name: 'Blogs' }">
-          View more blog
-          <i class="fas fa-arrow-right"></i>
-        </router-link> -->
-        <div class="row columns is-variable">
-          <BlogCard class="column is-2 mx-1" :post="post" v-for="(post, index) in blogPostsCards" :key="index" />
+  <div class="container">
+    <div class="section">
+      <div class="columns">
+        <div class="column has-text-centered">
+          <h1 class="title">Bulma Card Layout Template</h1><br>
         </div>
       </div>
+      <b-field>
+        <b-switch v-model="editPost" type="is-brand">
+          Default
+        </b-switch>
+      </b-field>
+      <div class="columns">
+        <BlogCard class="column is-one-third has-text-left" :post="post" v-for="(post, index) in blogPosts" :key="index" />
+      </div>
     </div>
-</section>
-  
+  </div>
+
 </template>
 
 <script>
@@ -38,15 +37,15 @@ export default {
       }
     },
     blogPosts() {
-      return this.$store.getters.blogPosts;
+      return this.$store.state.blogPosts;
     },
-    blogPostsCards() {
-      return this.$store.getters.blogPostsCards;
-    },
+    // blogPostsCards() {
+    //   return this.$store.getters.blogPostsCards;
+    // },
   },
-  beforeDestroy() {
-    this.$store.commit("tonggleEditPost", false)
-  }
+  // beforeDestroy() {
+  //   this.$store.commit("tonggleEditPost", false)
+  // }
 }
 </script>
 

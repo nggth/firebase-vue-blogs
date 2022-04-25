@@ -10,7 +10,7 @@
           Login/Register
           <b-icon icon="chevron-right"></b-icon>
         </router-link>
-        <router-link class="link light-link" v-else to="#">
+        <router-link class="link light-link" v-else :to="{ name: 'ViewBlog', params: { blogid: this.post.blogID } }">
           View the post
           <b-icon icon="chevron-right"></b-icon>
         </router-link>

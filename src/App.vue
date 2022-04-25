@@ -1,6 +1,6 @@
 <template>
   <div class='app-wrapper'>
-    <div id='app'>
+    <div id='app' v-if="this.$store.state.postLoaded">
       <Navigation v-if="!navigation"/>
       <router-view />
       <Footer v-if="!navigation"/>
@@ -13,7 +13,6 @@ import Navigation from './components/Navigation.vue'
 import Footer from './components/Footer.vue'
 import firebase from "firebase/app"
 import "firebase/auth"
-import 'firebase/firestore'
 export default {
   name: 'app',
   components: {

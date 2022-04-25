@@ -37,10 +37,8 @@
           </div>
 
           <div class="content">
-            <router-link class="link" to="#">
-              <b-button class="button is-link is-brand px-2">
+            <router-link class="button is-link is-brand px-2" :to="{ name: 'ViewBlog', params: {blogid: this.post.blogID} }">
                 View the post
-              </b-button>
             </router-link>
           </div>
         </div>

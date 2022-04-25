@@ -17,13 +17,12 @@ export default new Vuex.Store({
     blogPosts: [],
     postLoaded: null,
     blogHTML: 'Write your blog title here...',
-    blogTitle: '',
-    blogPhotoName: '',
+    blogTitle: "",
+    blogPhotoName: "",
     blogPhotoFileURL: null,
-    blogPhotoReview: null,
     editPost: null,
     user: null,
-    
+  
     profileEmail: null,
     profileName: null,
     profileUsername: null,
@@ -40,14 +39,14 @@ export default new Vuex.Store({
     // blogPostsFeed(state) {
     //   return state.blogPosts.slice(0, 2)
     // },
-    blogPostsCards(state) {
-      return state.blogPosts.slice(2, 6)
-    }
+    // blogPostsCards(state) {
+    //   return state.blogPosts.slice(2, 6)
+    // }
   },
   mutations: {
     newBlogPost(state, payload) {
       state.blogHTML = payload
-      console.log(state.blogHTML)
+      // console.log(state.blogHTML)
     },
     updateBlogTitle(state, payload) {
       state.blogTitle = payload
@@ -73,7 +72,7 @@ export default new Vuex.Store({
       state.profileRole = doc.data().role;
       state.profileDescription = doc.data().description;
       state.profileSkinType = doc.data().skinType;
-      console.log(state.profileId);
+      // console.log(state.profileId);
     },
     changeInfo(state, payload) {
       state.info.push({
@@ -85,16 +84,16 @@ export default new Vuex.Store({
         skinType: payload.skinType
       })
     },
-    openPhotoPreview(state) {
-      state.blogPhotoPreview = !state.blogPhotoPreview;
-    },
+    // openPhotoPreview(state) {
+    //   state.blogPhotoPreview = !state.blogPhotoPreview;
+    // },
   },
   actions: {
     async getCurrentUser({ commit }) {
       const dataBase = await db.collection("users").doc(firebase.auth().currentUser.uid);
       const dbResults = await dataBase.get()
       commit("setProfileInfo", dbResults);
-      console.log(dbResults)
+      // console.log(dbResults)
     },
     async updateUserSetting({state}) {
       const dataBase = await db.collection("users").doc(state.profileId)

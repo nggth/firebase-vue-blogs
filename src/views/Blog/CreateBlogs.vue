@@ -1,93 +1,97 @@
 <template>
-  <section class="columns">
-    <div class="column is-9">
-      <Loading v-show="loading" />
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Title</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <p class="control is-expanded has-icons-left">
-              <input class="input" type="text" placeholder="Enter blog title" v-model="blogTitle">
-              <span class="icon is-small is-left">
-                <i class="fas fa-user"></i>
-              </span>
-            </p>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Photo</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <div class="file is-normal has-name">
-              <label class="file-label">
-                <input class="file-input" type="file" ref="blogPhoto" id="blog-photo" @change="fileChange" accept=".png, .jpg, .jpeg" />
-                <span class="file-cta">
-                  <span class="file-icon">
-                    <i class="fas fa-upload"></i>
-                  </span>
-                </span>
-                <span class="file-name">
-                  <!-- {{ blogPhotoName || 'No photo' }} -->
-                  {{ this.$store.state.blogPhotoName || 'No photo'  }}
-                </span>
-              </label>
-              <div class="ml-3">
-                <button class="button is-infp" :disabled="!blogPhotoFileURL" @click="isCardModalActive = true">
-                  Preview...
-                </button>
+	<section class="hero is-fullheight">
+		<div class="hero-body">
+			<div class="container has-text-centered">
+				<div class="columns is-8 is-variable zz">
+					<div class="column is-two-thirds has-text-left">
+            <Loading v-show="loading" />
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Title</label>
               </div>
-              <b-modal v-model="isCardModalActive" :width="640" scroll="keep">
-                <div class="card">
-                  <div class="card-image">
-                    <figure class="image is-16by9">
-                        <img :src="this.blogPhotoFileURL" atl="" />
-                    </figure>
-                  </div>
-                  <div class="card-content ml-2">
-                    <div class="media">
-                      <div class="media-content">
-                        <p>*Image for title*</p>
+              <div class="field-body">
+                <div class="field">
+                  <p class="control is-expanded has-icons-left">
+                    <input class="input" type="text" placeholder="Enter blog title" v-model="blogTitle">
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Photo</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="file is-normal has-name">
+                    <label class="file-label">
+                      <input class="file-input" type="file" ref="blogPhoto" id="blog-photo" @change="fileChange" accept=".png, .jpg, .jpeg" />
+                      <span class="file-cta">
+                        <span class="file-icon">
+                          <i class="fas fa-upload"></i>
+                        </span>
+                      </span>
+                      <span class="file-name">
+                        {{ this.$store.state.blogPhotoName || 'No photo'  }}
+                      </span>
+                    </label>
+                    <div class="ml-3">
+                      <button class="button is-infp" :disabled="!blogPhotoFileURL" @click="isCardModalActive = true">
+                        Preview...
+                      </button>
+                    </div>
+                    <b-modal v-model="isCardModalActive" :width="640" scroll="keep">
+                      <div class="card">
+                        <div class="card-image">
+                          <figure class="image is-16by9">
+                              <img :src="this.blogPhotoFileURL" atl="" />
+                          </figure>
+                        </div>
+                        <div class="card-content ml-2">
+                          <div class="media">
+                            <div class="media-content">
+                              <p>*Image for title*</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
+                    </b-modal>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Decription</label>
+              </div>
+              <div class="field-body blog-container">
+                <div class="field">
+                  <div class="control">
+                    <div class="editor">
+                      <vue-editor id="editor-container" :editorOptions="editorSettings" v-model="blogHTML" useCustomImageHandler @image-added="imageHandler" />
                     </div>
                   </div>
                 </div>
-              </b-modal>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Decription</label>
-        </div>
-        <div class="field-body blog-container">
-          <div class="field">
-            <div class="control">
-              <div class="editor">
-                <vue-editor id="editor-container" :editorOptions="editorSettings" v-model="blogHTML" useCustomImageHandler @image-added="imageHandler" />
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="field is-horizontal">
-        <div class="field-label">
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <div class="control">
-              <div class="buttons">
-                <button class="button is-primary" @click="uploadBlog">Publish blog</button>
-                <router-link class="button is-link" :to="{ name: 'BlogPreview' }">Preview blog</router-link>
+            
+            <div class="field is-horizontal">
+              <div class="field-label">
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <div class="buttons">
+                      <button class="button is-primary" @click="uploadBlog">Publish blog</button>
+                      <router-link class="button is-link" :to="{ name: 'BlogPreview' }">Preview blog</router-link>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -98,10 +102,10 @@
 </template>
 
 <script>
-import Quill from 'quill';
-window.Quill = Quill
-const ImageResize = require('quill-image-resize-module').default
-Quill.register('modules/imageResize', ImageResize);
+import Quill from "quill";
+window.Quill = Quill;
+const ImageResize = require("quill-image-resize-module").default;
+Quill.register("modules/imageResize", ImageResize);
 
 import firebase from "firebase/app";
 import "firebase/storage";
@@ -119,8 +123,8 @@ export default {
       file: '',
       editorSettings: {
         modules: {
-          imageResize: {}
-        }
+          imageResize: {},
+        },
       },
       blogPhoto: '',
       isCardModalActive: false,
@@ -160,9 +164,9 @@ export default {
     },
 
     uploadBlog() {
-      this.loading = true;
       if (this.blogTitle.length !== 0 && this.blogHTML.length !== 0) {
         if (this.file) {
+          this.loading = true;
           const storageRef = firebase.storage().ref()
           const docRef = storageRef.child(`documents/BlogCoverPhotos/${this.$store.state.blogPhotoName}`)
           docRef.put(this.file).on('state_changed', (snapshot) => {
@@ -184,8 +188,9 @@ export default {
               profileId: this.profileId,
               date: timestamp,
             })
+            await this.$store.dispatch("getPost")
             this.loading = false
-            this.$router.push({ name: 'ViewBlog'})
+            this.$router.push({ name: 'ViewBlog', params: { blogid: database.id } })
           })
           return
         }
@@ -220,7 +225,6 @@ export default {
       }
     },
     blogPhotoFileURL() { return this.$store.state.blogPhotoFileURL},
-    
   }
 }
 </script>

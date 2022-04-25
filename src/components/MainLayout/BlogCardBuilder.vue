@@ -8,7 +8,6 @@
           </router-link>
       </div>
       <div class="row columns is-variable">
-        <!-- <BlogCard class="column is-3 mx-1" :post="post" v-for="(post, index) in blogPosts" :key="index" /> -->
         <BlogCard class="column is-3 mx-1" :post="post" v-for="(post, index) in blogPostsCards" :key="index" />
       </div>
     </div>

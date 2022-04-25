@@ -37,7 +37,7 @@ const routes = [
     }
   },
   {
-    path: '/view-blog',
+    path: '/view-blog/:blogid',
     name: 'ViewBlog',
     component: () => import('../views/Blog/ViewBlog.vue'),
     meta: {
