@@ -1,22 +1,18 @@
 <template>
-  <div class="container">
-    <div class="section">
-      <div class="columns">
-        <div class="column has-text-centered">
-          <h1 class="title">Bulma Card Layout Template</h1><br>
+    <div class="container">
+      <div class="section">
+        <p class="title is-">Profile of website</p>
+        <b-field v-if="role === 'admin'">
+          <b-switch v-model="editPost" type="is-info">
+            Default
+          </b-switch>
+        </b-field>
+        <hr>
+        <div class="row columns is-multiline">
+          <BlogCard class="is-3 m-2" :post="post" v-for="(post, index) in blogPosts" :key="index" />
         </div>
       </div>
-      <b-field>
-        <b-switch v-model="editPost" type="is-brand">
-          Default
-        </b-switch>
-      </b-field>
-      <div class="columns">
-        <BlogCard class="column is-one-third has-text-left" :post="post" v-for="(post, index) in blogPosts" :key="index" />
-      </div>
     </div>
-  </div>
-
 </template>
 
 <script>

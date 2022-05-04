@@ -87,7 +87,7 @@
                 <div class="field">
                   <div class="control">
                     <div class="buttons">
-                      <button class="button is-primary" @click="uploadBlog">Publish blog</button>
+                      <button class="button is-primary" @click="updateBlog">Update blog</button>
                       <router-link class="button is-link" :to="{ name: 'BlogPreview' }">Preview blog</router-link>
                     </div>
                   </div>
@@ -114,7 +114,7 @@ import db from "../../firebase/firebaseConfig"
 import Loading from  '../../components/Loading.vue'
 
 export default {
-  name: 'CreateBlogs',
+  name: 'EditBlog',
   components: {
     Loading
   },
@@ -129,8 +129,17 @@ export default {
       blogPhoto: '',
       isCardModalActive: false,
       error: null,
-      loading: null
+      loading: null,
+      routeID: null,
+      currentBlog: null,
     }
+  },
+  async mounted() {
+    this.routeID = this.$route.params.blogid
+    this.currentBlog = await this.$store.state.blogPosts.filter(post => {
+      return post.blogID === this.routeID
+    })
+    this.$store.commit('setBlogState', this.currentBlog[0])
   },
   methods: {
     fileChange() {
@@ -163,7 +172,8 @@ export default {
       )
     },
 
-    uploadBlog() {
+    async updateBlog() {
+      const database = await db.collection('blogPosts').doc(this.routeID)
       if (this.blogTitle.length !== 0 && this.blogHTML.length !== 0) {
         if (this.file) {
           this.loading = true;
@@ -176,30 +186,28 @@ export default {
             this.loading = false
           }, async () => {
             const downloadURL = await docRef.getDownloadURL()
-            const timestamp = await Date.now()
-            const database = await db.collection("blogPosts").doc()
-
-            await database.set({
-              blogID: database.id,
+            
+            await database.update({
               blogHTML: this.blogHTML,
               blogCoverPhoto: downloadURL,
               blogCoverPhotoName: this.blogCoverPhotoName,
               blogTitle: this.blogTitle,
-              profileId: this.profileId,
-              date: timestamp,
             })
-            await this.$store.dispatch("getPost")
+            await this.$store.dispatch("updatePost", this.routeID)
             this.loading = false
             this.$router.push({ name: 'ViewBlog', params: { blogid: database.id } })
           })
           return
         }
-        else {
-          this.loading = false
-          this.$toasted.show('Please upload a cover photo.', {
-            type: 'error'
-          })
-        }
+        this.loading = true
+        await database.update({
+          blogHTML: this.blogHTML,
+          blogTitle: this.blogTitle,
+        })
+        await this.$store.dispatch('updatePost', this.routeID)
+        this.loading = false
+        this.$router.push({ name: 'ViewBlog', params: { blogid: database.id }})
+        return
       }
       else {
         this.loading = false
@@ -210,7 +218,6 @@ export default {
     }
   },
   computed: {
-    profileId() { return this.$store.state.profileId },
     blogCoverPhotoName() {
       return this.$store.state.blogPhotoName;
     },

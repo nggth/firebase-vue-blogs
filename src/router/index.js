@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import firebase from 'firebase/app'
+import 'firebase/auth'
 
 Vue.use(VueRouter);
 
@@ -25,7 +27,8 @@ const routes = [
     name: 'CreateBlogs',
     component: () => import('../views/Blog/CreateBlogs.vue'),
     meta: {
-      title: 'Create Blogs'
+      title: 'Create Blogs',
+      requiresAuth: true
     }
   },
   {
@@ -42,6 +45,14 @@ const routes = [
     component: () => import('../views/Blog/ViewBlog.vue'),
     meta: {
     title: 'View Blog'
+    }
+  },
+  {
+    path: '/edit-blog/:blogid',
+    name: 'EditBlog',
+    component: () => import('../views/Blog/EditBlog.vue'),
+    meta: {
+      title: 'Edit Blog'
     }
   },
   {
@@ -73,7 +84,8 @@ const routes = [
     name: 'Profile',
     component: () => import('../views/Profile.vue'),
     meta: {
-      title: 'Profile'
+      title: 'Profile',
+      requiresAuth: true
     }
   },
   {
@@ -106,4 +118,21 @@ router.beforeEach((to, from, next) => {
   //require login
 })
 
+router.beforeEach(async (to, from, next) => {
+  let user = firebase.auth().currentUser
+  // if (user) {
+  //   let token = await user.getIdTokenResult
+  //   admin = token.claims.admin
+  // }
+  if (to.matched.some((res) => res.meta.requiresAuth)) {
+    if (user) {
+      return next()
+    }
+    return (
+      alert('Please login to do.'),
+      next({ name: 'Home'})
+    )
+  }
+  return next()
+})
 export default router;

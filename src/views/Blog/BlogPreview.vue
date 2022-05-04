@@ -16,7 +16,7 @@
               <div class="content is-medium">
                 <h1 class="title">{{ this.blogTitle }} </h1>
                 <h2 class="subtitle is-4">December 25, 2022</h2>
-                <div class="post-content ql-editor" v-html="blogHTML"></div>
+                <div class="đeql-editor" v-html="blogHTML"></div>
               </div>
             </div>
           </div>

@@ -14,8 +14,9 @@
           <div class="columns">
             <div class="column is-10 is-offset-1">
               <div class="content is-medium">
-                <p class="title is-1">{{ this.currentBlog[0].blogTitle }}</p>
-                <h4> Posted on: {{ new Date(this.currentBlog[0].blogDate).toLocaleString("vi-vn", { dateStyle: "long" }) }}</h4>
+                <p class="title is-2">{{ this.currentBlog[0].blogTitle }}</p>
+                <p class="subtitle is-5">Posted on: {{ new Date(this.currentBlog[0].blogDate).toLocaleString("vi-vn", { dateStyle: "long" }) }}</p>
+                <hr>
                 <div class="post-content ql-editor" v-html="this.currentBlog[0].blogHTML"></div>
               </div>
             </div>

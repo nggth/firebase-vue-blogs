@@ -94,7 +94,7 @@ export default {
           })
         })
         .catch(() => {
-          this.$toasted.show('Login unsuccessfully.', {
+          this.$toasted.show('Login failed.', {
             type: 'error'
           })
         });

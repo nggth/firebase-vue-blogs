@@ -22,24 +22,9 @@ export default {
   },
   data() {
     return {
-      sampleBlogPost: [
-        {
-          title: "This is a Filter Title",
-          blogHTML: "This is a Filter post title.",
-          blogCoverPhoto: "blog-phto1",
-        },
-        {
-          title: "This is a Filter Title",
-          blogHTML: "This is a Filter post title.",
-          blogCoverPhoto: "blog-phto2",
-        }
-      ],
     }
   },
   computed: {
-    blogPosts() {
-      return this.$store.getters.blogPosts;
-    },
     blogPostsCards() {
       return this.$store.getters.blogPostsCards;
     },
