@@ -1,16 +1,13 @@
 # firebase-vue-blogs
 
-## Project setup
+### Project setup
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### Run project
+Replace your key in this file src/firebase/firebaseConfig.js
+
 ```
 yarn serve
-```
-
-### Storage for testing
-```
-https://bitly.com.vn/pcyxa8
 ```
